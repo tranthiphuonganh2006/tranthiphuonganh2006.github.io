@@ -4,15 +4,59 @@
 <meta charset="utf-8">
 <title>Untitled Document</title>
 <style type="text/css">
-body {
-    background-color: #93BECD;
-    color: #000000;
-}
+    body {
+        background-color: #93BECD;
+        color: #000000;
+        margin: 0;
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        box-sizing: border-box;
+    }
+    .container {
+        position: relative;
+        width: 1715px;
+        max-width: 100%;
+    }
+    .container img {
+        width: 1715px;
+        height: 1087px;
+        max-width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 12px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+    .welcome-banner {
+    position: absolute;
+    top: 224px;
+    left: 994px;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 12px 35px;
+    border-radius: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    margin: 0;
+    text-align: center;
+    width: 444px;
+    height: 44px;
+    }
+    .welcome-banner b {
+        font-size: 1.8rem;
+        color: #000000;
+    }
 </style>
 </head>
 
 <body>
-<p><b> Chào mừng bạn đến với trang chủ</b></p>
-<p><img src="IMAGES/eula-genshin-impact-genshin-impact-sword-fantasy-art-video-game-art-hd-wallpaper-preview.jpg" width="1715" height="1087" alt=""/></p>
+    <div class="container">
+        <p class="welcome-banner"><b>Chào mừng bạn đến với trang chủ</b></p>
+        <img src="IMAGES/eula-genshin-impact-genshin-impact-sword-fantasy-art-video-game-art-hd-wallpaper-preview.jpg" width="1715" height="1087" alt=""/>
+    </div>
 </body>
 </html>
