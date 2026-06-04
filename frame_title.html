@@ -4,30 +4,66 @@
 <meta charset="utf-8">
 <title>Untitled Document</title>
 <style type="text/css">
-body {
-    background-color: #93BECD;
-    color: #D4D4D4;
-    margin-left: 0px;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-}
+    body {
+        background-color: #93BECD;
+        color: #D4D4D4;
+        margin: 0px;
+    }
+    table {
+        width: 1910px;
+        border-collapse: collapse;
+    }
+    .info-container {
+        width: 1660px;
+        height: 234px;
+        background-color: #93BECD;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .text-highlight {
+        color: #FF0004;
+        font-size: 1.25rem;
+        margin: 6px 0;
+        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
+    }
+    .marquee-wrapper {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        box-sizing: border-box;
+    }
+    .marquee-content {
+        display: inline-block;
+        padding-left: 100%;
+        animation: smoothScroll 10s linear infinite;
+        color: #FF0004;
+        font-size: 1.25rem;
+    }
+    @keyframes smoothScroll {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-100%, 0, 0); }
+    }
 </style>
 </head>
 
 <body>
-<table width="1910" height="0" border="0" cellpadding="0" cellspacing="0">
+<table border="0" cellpadding="0" cellspacing="0">
   <tbody>
     <tr>
-      <td width="250" rowspan="2"><img src="IMAGES/tải xuống.png" width="254" height="234" alt=""/></td>
-      <td width="1660" height="191" align= "center" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 12px"><font size="4" color="#FF0004" ><b>TRẦN THỊ PHƯƠNG ANH</b></font>
-	  </span>
-        <p style="text-align: center"><font size="4" color="#FF0004" ><strong>Lớp: CN24CD</strong></font></p>
-		  <p style="text-align: center"><font size="4" color="#FF0004" >
-		    <marquee>
-		    <strong>Môn: Thiết kế Web</strong>
-		    </marquee>
-      </font></p></td>
+      <td width="250" valign="top">
+        <img src="IMAGES/tải xuống.png" width="287" height="215" alt="" style="display: block;"/>
+      </td>
+      <td align="center">
+          <div class="info-container">
+              <p class="text-highlight"><b>TRẦN THỊ PHƯƠNG ANH</b></p>
+              <p class="text-highlight"><strong>Lớp: CN24CD</strong></p>
+              <div class="marquee-wrapper">
+                  <span class="marquee-content"><strong>Môn: Thiết kế Web</strong></span>
+              </div>
+          </div>
+      </td>
     </tr>
   </tbody>
 </table>
