@@ -2,11 +2,12 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Untitled Document</title>
+<title>Trang chủ</title>
 <style type="text/css">
     body {
-        background-color: #93BECD;
-        color: #000000;
+        /* Thay màu nền phẳng bằng Gradient chuyển màu mượt mà, tạo chiều sâu */
+        background: linear-gradient(135deg, #7FA7B7 0%, #93BECD 50%, #B2D7E5 100%);
+        color: #333333;
         margin: 0;
         padding: 30px;
         display: flex;
@@ -14,49 +15,62 @@
         align-items: center;
         min-height: 100vh;
         box-sizing: border-box;
+        /* Sử dụng hệ thống font hiện đại, sắc nét hơn */
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
     .container {
         position: relative;
-        width: 1715px;
-        max-width: 100%;
+        width: 100%;
+        max-width: 1715px; /* Giữ nguyên kích thước tối đa của bạn */
+        margin: 0 auto;
     }
     .container img {
-        width: 1715px;
-        height: 1087px;
-        max-width: 100%;
+        width: 100%;
         height: auto;
         display: block;
-        border-radius: 12px;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        border-radius: 20px; /* Bo góc mềm mại, nghệ thuật hơn */
+        /* Bóng đổ hiệu ứng nổi (3D Layer) chuyên nghiệp */
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), 0 5px 15px rgba(0, 0, 0, 0.1);
     }
     .welcome-banner {
     position: absolute;
-    top: 224px;
-    left: 994px;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 12px 35px;
-    border-radius: 30px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    /* Giữ nguyên vị trí tọa độ cũ của bạn */
+    top: 221px;
+    left: 976px;
+    transform: translate(-50%, -50%);
+    /* Nền trắng hiệu ứng kính mờ (Glassmorphism) cao cấp */
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    /* Căn chỉnh không gian */
+    padding: 16px 40px;
+    border-radius: 50px; /* Bo tròn hoàn hảo kiểu kẹo viên (Pill-shaped) */
+    /* Bóng đổ mịn cho Banner để tách biệt với hình nền phía sau */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.4);
     margin: 0;
     text-align: center;
-    width: 444px;
-    height: 44px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    width: 540px; /* Giữ nguyên chiều rộng */
     }
     .welcome-banner b {
-        font-size: 1.8rem;
-        color: #000000;
+        font-size: 1.65rem;
+        /* Đổi sang màu xanh đen đậm để hài hòa với tone màu lạnh của Eula */
+        color: #1A2E3B; 
+        font-weight: 600;
+        letter-spacing: 0.5px; /* Giãn chữ nhẹ giúp sang trọng hơn */
+        line-height: 1.2;
+        display: inline-block;
+        vertical-align: middle;
     }
 </style>
 </head>
 
 <body>
     <div class="container">
-        <p class="welcome-banner"><b>Chào mừng bạn đến với trang chủ</b></p>
-        <img src="IMAGES/eula-genshin-impact-genshin-impact-sword-fantasy-art-video-game-art-hd-wallpaper-preview.jpg" width="1715" height="1087" alt=""/>
+        <div class="welcome-banner"><b>Chào mừng bạn đến với trang chủ</b></div>
+        <img src="IMAGES/eula-genshin-impact-genshin-impact-sword-fantasy-art-video-game-art-hd-wallpaper-preview.jpg" alt="Eula Genshin Impact" height="908"/>
     </div>
 </body>
 </html>
