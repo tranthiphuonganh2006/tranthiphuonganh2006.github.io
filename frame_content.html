@@ -1,78 +1,589 @@
 <!doctype html>
+
 <html>
+
 <head>
+
 <meta charset="utf-8">
+
 <base target="frame_Main">
+
 <title>Untitled Document</title>
+
 <style type="text/css">
+
     body {
+
         background-color: #2E86A4;
+
         color: #FDFDFD;
+
         padding: 15px;
+
         margin: 0;
+
     }
+
     h3 {
+
         color: #FFF;
+
         border-left: 3px solid #FFD700;
+
         padding-left: 8px;
+
         margin-top: 20px;
+
         margin-bottom: 12px;
+
     }
+
     ul {
+
         list-style-type: none;
+
         padding-left: 10px;
+
         margin-bottom: 20px;
+
     }
+
     li {
+
         margin-bottom: 7px;
+
     }
+
     ul li a {
+
         color: #E5E5E5;
+
         text-decoration: none;
+
         transition: all 0.2s ease;
+
         display: inline-block;
+
     }
+
     ul li a:hover {
+
         color: #FFD700 !important;
+
         transform: translateX(4px);
+
     }
+
+
+
 </style>
+
+
+
+ <style>
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+        
+
+        body {
+
+            background: linear-gradient(180deg, #1f4068 0%, #16213e 100%);
+
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+            padding: 30px 15px;
+
+            min-height: 100vh;
+
+        }
+
+
+
+        .sidebar-container {
+
+            max-width: 360px;
+
+            margin: 0 auto;
+
+        }
+
+        
+
+        .sidebar-title {
+
+            text-align: center;
+
+            color: #e94560;
+
+            font-size: 1.6rem;
+
+            font-weight: bold;
+
+            padding: 15px;
+
+            margin-bottom: 25px;
+
+            border-bottom: 3px solid #e94560;
+
+            text-shadow: 0 0 15px rgba(233, 69, 96, 0.6);
+
+            letter-spacing: 2px;
+
+        }
+
+        
+
+        .menu-section {
+
+            margin-bottom: 15px;
+
+        }
+
+        
+
+        /* HEADER MENU */
+
+        .section-header {
+
+            background: linear-gradient(135deg, #2E86A4 0%, #c23a51 100%);
+
+            color: #fff;
+
+            padding: 14px 20px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            font-size: 1rem;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+
+            user-select: none; /* Ngăn bôi đen chữ khi click nhanh */
+
+        }
+
+        
+
+        .section-header:hover {
+
+            background: linear-gradient(135deg, #2E86A4 0%, #e94560 100%);
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 6px 12px rgba(233, 69, 96, 0.3);
+
+        }
+
+
+
+        .section-header:active {
+
+            transform: translateY(0);
+
+        }
+
+
+
+        .section-header .arrow {
+
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        }
+
+
+
+        /* Khi menu active, xoay mũi tên và giữ màu highlight */
+
+        .section-header.active {
+
+            background: linear-gradient(135deg, #2E86A4 0%, #e94560 100%);
+
+        }
+
+
+
+        .section-header.active .arrow {
+
+            transform: rotate(180deg);
+
+        }
+
+        
+
+        /* ITEM LIST - Tối ưu hiệu ứng sổ xuống mượt mà */
+
+        .menu-wrapper {
+
+            display: grid;
+
+            grid-template-rows: 0fr;
+
+            transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            overflow: hidden;
+
+        }
+
+
+
+        .menu-wrapper.open {
+
+            grid-template-rows: 1fr;
+
+        }
+
+
+
+        .menu-items {
+
+            list-style: none;
+
+            padding: 5px 5px 0 5px;
+
+            min-height: 0; /* Bắt buộc phải có để hiệu ứng grid hoạt động */
+
+        }
+
+        
+
+        .menu-items li {
+
+            margin-bottom: 8px;
+
+            /* Tạo hiệu ứng xuất hiện từ từ cho từng item */
+
+            opacity: 0;
+
+            transform: translateY(-10px);
+
+            transition: opacity 0.3s, transform 0.3s;
+
+        }
+
+
+
+        .menu-wrapper.open .menu-items li {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+        }
+
+        
+
+        /* CSS cho các thẻ link liên kết */
+
+        .menu-items a {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 11px 15px;
+
+            color: #e2e8f0;
+
+            text-decoration: none;
+
+            background: rgba(255, 255, 255, 0.06);
+
+            border-radius: 6px;
+
+            transition: all 0.25s ease;
+
+            font-size: 0.95rem;
+
+            border-left: 4px solid #667eea;
+
+        }
+
+        
+
+        .menu-items a:hover {
+
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+            color: #fff;
+
+            padding-left: 22px;
+
+            border-left-color: #e94560;
+
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+
+        }
+
+        
+
+        .menu-items a .num {
+
+            background: #e94560;
+
+            color: white;
+
+            width: 24px;
+
+            height: 24px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-weight: bold;
+
+            font-size: 0.8rem;
+
+            flex-shrink: 0;
+
+            transition: transform 0.2s ease;
+
+        }
+
+        
+
+        .menu-items a:hover .num {
+
+            background: white;
+
+            color: #764ba2;
+
+            transform: scale(1.1);
+
+        }
+
+    </style>
+
 </head>
 
+
+
 <body>
-    <h3>Mục Lục</h3>
-    <ul>
-        <li><a href="Bai1/index.html">Bài 1</a></li>
+
+
+
+ <div class="menu-section">
+
+            <div class="section-header">
+
+                <span>📝 Bài Tập 1</span>
+
+                <span class="arrow">▼</span>
+
+            </div>
+
+            <div class="menu-wrapper">
+
+                <ul class="menu-items">
+
+                     <li><a href="Bai1/index.html">Bài 1</a></li>
+
         <li><a href="Bai1_2_Excite/index.html">Bài 2</a></li>
+
         <li><a href="Bai 1_3 _ Free_com/index.html">Bài 3</a></li>
+
         <li><a href="Bai 1_4 _Scaal/index.html">Bài 4</a></li>
+
         <li><a href="Bai 1_5 _ Phieu dang ky/index.html">Bài 5</a></li>
-    </ul>
-    
-    <h3>Bài tập CHƯƠNG 2</h3>
-    <ul>
-        <li><a href="BaiTapChuong2/Bai2.1_online/index.html">Bai 2.1_online</a></li>
-        <li><a href="BaiTapChuong2/Bai2.2_Hoacanh/index.html">Bai2.2_Hoacanh</a></li>
-        <li><a href="BaiTapChuong2/Bai2.3_CLBMyThuat/index.html">Bai2.3_CLBMyThuat</a></li>
-    </ul>
-    
-    <h3>Bài tập HTML</h3>
-    <ul>
-        <li><a href="BaiTapHTML/HTML/B1_Wellcome.html.html">B1_Wellcome</a></li>
+
+                </ul>
+
+            </div>
+
+        </div>  
+
+
+
+        <div class="menu-section">
+
+            <div class="section-header">
+
+                <span>📝 Bài tập HTML</span>
+
+                <span class="arrow">▼</span>
+
+            </div>
+
+            <div class="menu-wrapper">
+
+                <ul class="menu-items">
+
+                    <li><a href="BaiTapHTML/HTML/B1_Wellcome.html.html">B1_Wellcome</a></li>
+
         <li><a href="BaiTapHTML/HTML/B2_Cohaimo.html.html">B2_Cohaimo</a></li>
+
         <li><a href="BaiTapHTML/HTML/B3_ChisoTrenduoi.html.html">B3_ChisoTrenduoi</a></li>
+
         <li><a href="BaiTapHTML/HTML/B4_Kyhieudacbiet.html.html">B4_Kyhieudacbiet</a></li>
+
         <li><a href="BaiTapHTML/HTML/B5_Hieuungvb.html.html">B5_Hieuungvb</a></li>
+
         <li><a href="BaiTapHTML/HTML/B6_ChuongTrinhDTWeb1.html.html">B6_ChuongTrinhDTWeb1</a></li>
+
         <li><a href="BaiTapHTML/HTML/B7_ChuongTrinhDTWeb2.htm.html">B7_ChuongTrinhDTWeb2</a></li>
+
         <li><a href="BaiTapHTML/HTML/B8_ChuongTrinhDTWeb.html.html">B8_ChuongTrinhDTWeb</a></li>
+
         <li><a href="BaiTapHTML/HTML/B9_ChuongTrinhDTTHVP.html).html">B9_ChuongTrinhDTTHVP</a></li>
+
         <li><a href="BaiTapHTML/HTML/B10_TaisanBill.html.html">B10_TaisanBill</a></li>
+
         <li><a href="BaiTapHTML/HTML/B11_Nhacnen.html.html">B11_Nhacnen</a></li>
+
         <li><a href="BaiTapHTML/HTML/BT12_ChuongTrinhDTWeb.html">BT12_ChuongTrinhDaoTao</a></li>
+
         <li><a href="BaiTapHTML/HTML/BT13_DanhBaWeb.html">BT13_DanhBaWeb</a></li>
+
         <li><a href="BaiTapHTML/HTML/BT14_Albumnhac.html">BT14_Albumnhac</a></li>
+
         <li><a href="BaiTapHTML/HTML/BT15_KetQuaHocTap.html">BT15_KetQuaHocTap</a></li>
-    </ul>
+
+                </ul>
+
+            </div>
+
+        </div>  
+
+
+
+        <div class="menu-section">
+
+            <div class="section-header">
+
+                <span>📝 Bài tập CHƯƠNG 2</span>
+
+                <span class="arrow">▼</span>
+
+            </div>
+
+            <div class="menu-wrapper">
+
+                <ul class="menu-items">
+
+                    <li><a href="BaiTapChuong2/Bai2.1_online/index.html">Bai 2.1_online</a></li>
+
+        <li><a href="BaiTapChuong2/Bai2.2_Hoacanh/index.html">Bai2.2_Hoacanh</a></li>
+
+        <li><a href="BaiTapChuong2/Bai2.3_CLBMyThuat/index.html">Bai2.3_CLBMyThuat</a></li>
+
+                </ul>
+
+            </div>
+
+        </div>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script>
+
+        // Sử dụng Kỹ thuật Ủy quyền sự kiện (Event Delegation) để lắng nghe click chuyên nghiệp
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const headers = document.querySelectorAll('.section-header');
+
+            
+
+            headers.forEach(header => {
+
+                header.addEventListener('click', function() {
+
+                    const currentWrapper = this.nextElementSibling;
+
+                    const isOpen = currentWrapper.classList.contains('open');
+
+                    
+
+                    // BƯỚC TỐI ƯU: Đóng tất cả các menu khác trước khi mở menu mới
+
+                    document.querySelectorAll('.menu-wrapper').forEach(wrapper => {
+
+                        wrapper.classList.remove('open');
+
+                    });
+
+                    document.querySelectorAll('.section-header').forEach(h => {
+
+                        h.classList.remove('active');
+
+                    });
+
+                    
+
+                    // Nếu menu vừa ấn chưa mở thì bật nó lên
+
+                    if (!isOpen) {
+
+                        currentWrapper.classList.add('open');
+
+                        this.classList.add('active');
+
+                    }
+
+                });
+
+            });
+
+        });
+
+    </script>
+
+
+
+
+
 </body>
+
+
+
+
+
+
+
 </html>
