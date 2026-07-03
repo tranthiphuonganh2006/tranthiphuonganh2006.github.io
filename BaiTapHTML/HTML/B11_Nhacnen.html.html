@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Espresso - Sabrina Carpenter</title>
+<style type="text/css">
+    /* Reset mặc định */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* Áp dụng lại ảnh nền hoàng hôn đồng bộ với trang trước */
+        background-image: url('aa8044ca87748268211b4f5a1b91b5ef.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+    }
+
+    /* Khung bảng được biến hóa thành hộp kính mờ (Glassmorphism) */
+    table {
+        width: 100%;
+        max-width: 650px;
+        border-collapse: collapse;
+        background: rgba(22, 43, 59, 0.8); /* Tone xanh chàm tối từ mây */
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(240, 142, 116, 0.25); /* Viền cam hồng nhẹ */
+    }
+
+    /* Bỏ viền đen thô của border="1" */
+    table, tr, td {
+        border: none !important;
+    }
+
+    /* Ô chứa Video */
+    .video-cell {
+        padding: 20px 20px 10px 20px;
+        text-align: center;
+    }
+
+    video {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        outline: none;
+    }
+
+    /* Ô chứa Lời bài hát */
+    .lyrics-cell {
+        padding: 20px 30px 35px 30px;
+        color: #E2EFF5; /* Màu xanh mây trời nhạt, dịu mắt */
+        font-size: 1.05rem;
+        line-height: 1.8;
+        text-align: center;
+        letter-spacing: 0.5px;
+    }
+
+    /* Đoạn điệp khúc (Highlight) */
+    .chorus {
+        color: #FAD67B; /* Màu nắng vàng rực rỡ */
+        font-weight: 600;
+        text-shadow: 0 2px 8px rgba(250, 214, 123, 0.3);
+        margin-bottom: 15px;
+    }
+
+    /* Phân đoạn Verse */
+    .verse-title {
+        color: #F08E74; /* Màu cam hồng hoàng hôn */
+        font-weight: bold;
+        margin-top: 15px;
+        display: block;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 1.5px;
+    }
+</style>
+</head>
+
+<body>
+
+<table>
+  <tbody>
+    <tr>
+      <td class="video-cell">
+        <!-- Sửa lỗi cú pháp video và tự động phát (muted giúp autoplay hoạt động mượt hơn) -->
+        <video controls autoplay muted>
+          <source src="../Video/videoplayback.mp4" type="video/mp4">
+          Trình duyệt của bạn không hỗ trợ thẻ video.
+        </video>
+      </td>
+    </tr>
+    <tr>
+      <td class="lyrics-cell">
+        <div class="chorus">
+          Now he's thinkin' 'bout me every night, oh<br>
+          Is it that sweet? I guess so. Say you can't sleep, baby, I know<br>
+          That's that me, espresso<br>
+          Move it up, down, left, right, oh<br>
+          Switch it up like Nintendo. Say you can't sleep, baby, I know<br>
+          That's that me, espresso
+        </div>
+
+        <span class="verse-title">[Verse 1]</span>
+        I can't relate to desperation<br>
+        My "give a fucks" are on vacation<br>
+        And I got this one boy and he won't stop calling<br>
+        When they act this way, I know I got 'em<br>
+
+        <span class="verse-title">[Pre-Chorus]</span>
+        Too bad your ex don't do it for ya<br>
+        Walked in and dream-came-trued it for ya<br>
+        Soft skin and I perfumed it for ya (Yes)<br>
+        I know I Mountain Dew it for ya (Yes)<br>
+        That morning coffee, brewed it for ya (Yes)<br>
+        One touch and I brand-newed it for ya
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
