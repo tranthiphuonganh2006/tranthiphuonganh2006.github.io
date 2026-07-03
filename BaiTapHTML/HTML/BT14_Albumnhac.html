@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Phát Đĩa Nhạc Online</title>
+<style type="text/css">
+    /* Reset mặc định */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* Sử dụng ảnh nền ban đầu của bạn */
+        background-image: url(../../New%20folder/Images/tai-bo-hinh-nen-may-tinh-10.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        overflow: hidden;
+    }
+
+    /* Lớp phủ mờ giúp hòa quyện màu với nền ảnh */
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(28, 59, 78, 0.35); /* Tông xanh thẫm lấy từ bóng mây */
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        z-index: -1;
+    }
+
+    /* Container chính: Màu xanh đen phối mờ nhẹ */
+    .box {
+        background: rgba(22, 43, 59, 0.8); /* Màu xanh chàm đậm từ góc tối của bầu trời */
+        width: 380px;
+        padding: 40px;
+        border-radius: 24px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255,255,255,0.1);
+        border: 1px solid rgba(240, 142, 116, 0.2); /* Viền màu cam hồng pastel nhẹ */
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+        margin-bottom: 25px;
+        color: #F08E74; /* Màu cam hồng ấm của ánh hoàng hôn */
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border-bottom: 2px solid rgba(240, 142, 116, 0.3);
+        padding-bottom: 10px;
+        text-shadow: 0 2px 10px rgba(240, 142, 116, 0.3);
+    }
+
+    /* Container cho đĩa xoay */
+    .disc-container {
+        position: relative;
+        width: 220px;
+        height: 220px;
+        margin: 0 auto 30px;
+    }
+
+    /* Đĩa vinyl (Lấy cảm hứng từ thân cây tối màu tương phản với ánh mặt trời) */
+    .vinyl {
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, #2d2625 15%, #181312 25%, #2a3d45 60%, #111a1e 70%);
+        border-radius: 50%;
+        border: 8px solid #141110;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.6), inset 0 0 15px rgba(255,255,255,0.05);
+        position: relative;
+        transition: transform 0.2s linear;
+        animation: rotateDisc 10s linear infinite;
+        animation-play-state: paused;
+    }
+
+    /* Nhãn tròn ở giữa (Tâm đĩa màu Mặt trời/Mây vàng rực) */
+    .vinyl-label {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #FAD67B 0%, #F08E74 100%); /* Màu nắng chuyển sang cam hồng */
+        border-radius: 50%;
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        border: 4px solid #181312;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #2d2625;
+        font-size: 1.1rem;
+        box-shadow: 0 0 10px rgba(240, 142, 116, 0.5);
+    }
+
+    /* Lỗ nhỏ ở giữa label */
+    .vinyl-label::after {
+        content: "";
+        width: 12px;
+        height: 12px;
+        background: #181312;
+        border-radius: 50%;
+    }
+
+    /* Animation xoay */
+    @keyframes rotateDisc {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    /* Danh sách nhạc */
+    .playlist {
+        list-style: none;
+        width: 100%;
+    }
+
+    .playlist li {
+        margin-bottom: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .playlist li:hover {
+        background: rgba(240, 142, 116, 0.1); /* Sáng nhẹ lên tone cam khi di chuột */
+        border-color: rgba(240, 142, 116, 0.3);
+    }
+
+    .playlist a {
+        color: #D3E4ED; /* Màu xanh mây trời nhạt giúp dịu mắt */
+        text-decoration: none;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: color 0.3s ease;
+        width: 100%;
+    }
+
+    .playlist a:hover {
+        color: #FAD67B; /* Chữ chuyển sang màu vàng nắng khi hover */
+    }
+
+    .play-icon {
+        font-size: 0.9rem;
+        opacity: 0.7;
+    }
+</style>
+</head>
+
+<body>
+    
+    <div class="box">
+        <h2>Nhạc Online</h2>
+
+        <!-- Container Đĩa Nhạc Xoay -->
+        <div class="disc-container">
+            <div class="vinyl" id="vinyl">
+                <div class="vinyl-label">🎵</div>
+            </div>
+        </div>
+
+        <!-- Danh sách nhạc -->
+        <ul class="playlist">
+            <li>
+                <a href="../Sounds/nhac - (320 Kbps).mp3" onclick="return playMusic('nhac.mp3', 'Phép màu', this)">
+                    <span>1. Phép màu</span>
+                    <span class="play-icon">▶</span>
+                </a>
+            </li>
+            <li>
+                <a href="../Sounds/nhac1 - (320 Kbps).mp3" onclick="return playMusic('nhac1.mp3', 'Nơi này có anh', this)">
+                    <span>2. Nơi này có anh</span>
+                    <span class="play-icon">▶</span>
+                </a>
+            </li>
+            <li>
+                <a href="../Sounds/nhac3 - (320 Kbps).mp3" onclick="return playMusic('nhac3.mp3', 'Chiếc khăn gió ấm', this)">
+                    <span>3. Chiếc khăn gió ấm</span>
+                    <span class="play-icon">▶</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Script điều khiển hoạt họa đĩa nhạc -->
+    <script>
+        let isPlaying = false;
+        const vinyl = document.getElementById('vinyl');
+
+        function playMusic(fileName, songTitle, linkElement) {
+            console.log("Đang phát: " + songTitle);
+
+            isPlaying = true;
+            vinyl.style.animationPlayState = 'running';
+
+            // Trả lại giao diện mặc định cho playlist
+            document.querySelectorAll('.playlist li').forEach(li => {
+                li.style.background = "rgba(255, 255, 255, 0.04)";
+                li.style.borderColor = "rgba(255, 255, 255, 0.05)";
+                li.querySelector('a').style.color = "#D3E4ED";
+                li.querySelector('.play-icon').innerText = "▶";
+            });
+
+            // Làm nổi bật bài hát đang chạy theo màu hoàng hôn active
+            const parentLi = linkElement.parentElement;
+            parentLi.style.background = "rgba(240, 142, 116, 0.18)";
+            parentLi.style.borderColor = "rgba(240, 142, 116, 0.4)";
+            linkElement.style.color = "#FAD67B";
+            parentLi.querySelector('.play-icon').innerText = "⏸";
+
+            return true;
+        }
+    </script>
+</body>
+</html>
