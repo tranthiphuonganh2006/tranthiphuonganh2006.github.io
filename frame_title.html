@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Header Thông Tin</title>
+<style type="text/css">
+    body {
+        /* Sử dụng ảnh IMG_0493.jpg làm hình nền tràn màn hình */
+        background-image: url('IMAGES/IMG_0493.PNG');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        overflow-x: hidden;
+        min-height: 100vh;
+    }
+    
+    table {
+        width: 100%;
+        max-width: 1910px; 
+        margin: 0 auto;
+        border-collapse: collapse;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        /* Tạo hiệu ứng mờ kính (Glassmorphism) sang trọng để nổi bật trên nền ảnh */
+        background-color: rgba(255, 255, 255, 0.25); 
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Ô chứa nội dung */
+    .logo-cell {
+        text-align: center;
+        padding: 20px 10px;
+    }
+
+    /* Khung chứa thông tin bên phải */
+    .info-container {
+        width: 100%;
+        height: 215px; 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
+    
+    /* Chữ Tên & Lớp: Tăng độ đậm và bóng đổ để dễ đọc trên nền sáng */
+    .text-highlight {
+        color: #0F232E; 
+        font-size: 1.4rem;
+        margin: 6px 0;
+        letter-spacing: 0.5px;
+        text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.8);
+    }
+    
+    /* Điểm nhấn riêng cho Tên sinh viên */
+    .student-name {
+        font-size: 1.8rem;
+        color: #051622;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+    
+    /* Khung chữ chạy môn học */
+    .marquee-wrapper {
+        width: 100%;
+        max-width: 500px; 
+        overflow: hidden;
+        white-space: nowrap;
+        box-sizing: border-box;
+        margin-top: 15px;
+        background: rgba(255, 255, 255, 0.6); /* Tăng độ đục một chút để text đỏ nổi bật */
+        padding: 8px 0;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    /* Chữ chạy môn học */
+    .marquee-content {
+        display: inline-block;
+        animation: smoothScroll 10s linear infinite;
+        color: #C00005; 
+        font-size: 1.15rem;
+        letter-spacing: 0.5px;
+        font-weight: 500;
+    }
+    
+    /* Tạm dừng chạy khi di chuột vào */
+    .marquee-wrapper:hover .marquee-content {
+        animation-play-state: paused;
+        cursor: default;
+    }
+    
+    @keyframes smoothScroll {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(-100%); }
+    }
+</style>
+</head>
+
+<body>
+<table border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td height="220" valign="top" class="logo-cell">
+        <div class="info-container">
+          <p class="text-highlight student-name">TRẦN THỊ PHƯƠNG ANH</p>
+          <p class="text-highlight">Lớp: <strong>CN24CD</strong></p>
+          
+          <div class="marquee-wrapper">
+            <span class="marquee-content">🎯 Môn học: <strong>Thiết kế Web</strong> — Học kỳ mới thành công rực rỡ! 🎯</span>
+          </div>
+        </div>      
+      </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
