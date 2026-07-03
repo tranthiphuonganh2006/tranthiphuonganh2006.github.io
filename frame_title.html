@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Header Thông Tin</title>
+<style type="text/css">
+    body {
+        /* Nền chuyển màu mượt mà, đồng bộ với tone xanh gốc của bạn */
+        background: linear-gradient(135deg, #7FA7B7 0%, #93BECD 100%);
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        overflow-x: hidden;
+    }
+    
+    table {
+        width: 100%;
+        max-width: 1910px; /* Giữ giới hạn kích thước tối đa ban đầu của bạn */
+        margin: 0 auto;
+        border-collapse: collapse;
+        /* Tạo hiệu ứng đổ bóng nhẹ cho toàn bộ dải header */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        background-color: rgba(255, 255, 255, 0.15); /* Lớp nền kính nhẹ */
+    }
+    
+    /* Ô chứa logo */
+    .logo-cell {
+        background-color: #ffffff; /* Tạo nền trắng làm nổi bật logo của bạn */
+        text-align: center;
+        padding: 10px;
+        border-right: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .logo-cell img {
+        display: block;
+        border-radius: 8px; /* Bo góc nhẹ cho hình ảnh logo sinh động */
+        object-fit: contain;
+    }
+
+    /* Khung chứa thông tin bên phải */
+    .info-container {
+        width: 100%;
+        height: 215px; /* Điều chỉnh bằng chiều cao của ảnh để bằng chằn chặn */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
+    
+    /* Chữ Tên & Lớp: Thay màu đỏ chói bằng màu xanh đen Navy sang trọng, sắc nét */
+    .text-highlight {
+        color: #1A3644; 
+        font-size: 1.4rem;
+        margin: 6px 0;
+        letter-spacing: 0.5px;
+        text-shadow: 1px 1px 0px rgba(300, 255, 255, 0.5);
+    }
+    
+    /* Điểm nhấn riêng cho Tên sinh viên */
+    .student-name {
+        font-size: 1.7rem;
+        color: #0F232E;
+        letter-spacing: 1px;
+    }
+    
+    /* Khung chữ chạy môn học */
+    .marquee-wrapper {
+        width: 100%;
+        max-width: 500px; /* Giới hạn độ rộng chữ chạy để không bị loãng */
+        overflow: hidden;
+        white-space: nowrap;
+        box-sizing: border-box;
+        margin-top: 10px;
+        background: rgba(300, 255, 255, 0.4); /* Tạo một thanh nền mờ cho chữ chạy qua */
+        padding: 6px 0;
+        border-radius: 20px;
+        border: 1px solid rgba(400, 255, 255, 0.3);
+    }
+    
+    /* Chữ chạy môn học: Sử dụng màu Đỏ Đô/Đỏ Rượu sâu và tinh tế hơn đỏ tươi */
+    .marquee-content {
+        display: inline-block;
+        animation: smoothScroll 10s linear infinite;
+        color: #C00005; 
+        font-size: 1.15rem;
+        letter-spacing: 0.5px;
+    }
+    
+    /* Tạm dừng chạy khi di chuột vào */
+    .marquee-wrapper:hover .marquee-content {
+        animation-play-state: paused;
+        cursor: default;
+    }
+    
+    @keyframes smoothScroll {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(-100%); }
+    }
+</style>
+</head>
+
+<body>
+<table border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td height="220" valign="top" class="logo-cell">
+        <div class="info-container">
+          <p class="text-highlight student-name"><b>TRẦN THỊ PHƯƠNG ANH</b></p>
+          <p class="text-highlight">Lớp: <strong>CN24CD</strong></p>
+          
+          <div class="marquee-wrapper">
+            <span class="marquee-content">🎯 Môn học: <strong>Thiết kế Web</strong> — Học kỳ mới thành công rực rỡ! 🎯</span>
+            </div>
+          </div>      </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
