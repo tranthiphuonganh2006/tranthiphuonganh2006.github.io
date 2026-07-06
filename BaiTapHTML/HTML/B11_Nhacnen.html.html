@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Phát Đĩa Nhạc Online</title>
+<title>Espresso - Sabrina Carpenter</title>
 <style type="text/css">
     /* Reset mặc định */
     * {
@@ -13,242 +13,124 @@
 
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-image: url(../../New%20folder/Images/tai-bo-hinh-nen-may-tinh-10.png);
+        /* Áp dụng lại ảnh nền hoàng hôn đồng bộ với trang trước */
+        background-image: url('aa8044ca87748268211b4f5a1b91b5ef.jpg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        height: 100vh;
+        background-attachment: fixed;
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        color: #fff;
+        padding: 40px 20px;
+    }
+
+    /* Khung bảng được biến hóa thành hộp kính mờ (Glassmorphism) */
+    table {
+        width: 100%;
+        max-width: 650px;
+        border-collapse: collapse;
+        background: rgba(22, 43, 59, 0.8); /* Tone xanh chàm tối từ mây */
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-radius: 20px;
         overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(240, 142, 116, 0.25); /* Viền cam hồng nhẹ */
     }
 
-    body::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(28, 59, 78, 0.35); 
-        backdrop-filter: blur(6px);
-        -webkit-backdrop-filter: blur(6px);
-        z-index: -1;
+    /* Bỏ viền đen thô của border="1" */
+    table, tr, td {
+        border: none !important;
     }
 
-    .box {
-        background: rgba(22, 43, 59, 0.8); 
-        width: 380px;
-        padding: 40px;
-        border-radius: 24px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255,255,255,0.1);
-        border: 1px solid rgba(240, 142, 116, 0.2); 
+    /* Ô chứa Video */
+    .video-cell {
+        padding: 20px 20px 10px 20px;
         text-align: center;
-        position: relative;
-        z-index: 1;
     }
 
-    h2 {
-        font-size: 1.6rem;
-        margin-bottom: 25px;
-        color: #F08E74; 
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        border-bottom: 2px solid rgba(240, 142, 116, 0.3);
-        padding-bottom: 10px;
-        text-shadow: 0 2px 10px rgba(240, 142, 116, 0.3);
-    }
-
-    .disc-container {
-        position: relative;
-        width: 220px;
-        height: 220px;
-        margin: 0 auto 30px;
-    }
-
-    .vinyl {
+    video {
         width: 100%;
-        height: 100%;
-        background: radial-gradient(circle, #2d2625 15%, #181312 25%, #2a3d45 60%, #111a1e 70%);
-        border-radius: 50%;
-        border: 8px solid #141110;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.6), inset 0 0 15px rgba(255,255,255,0.05);
-        position: relative;
-        animation: rotateDisc 10s linear infinite;
-        animation-play-state: paused; /* Mặc định đĩa đứng yên */
-    }
-
-    .vinyl-label {
-        width: 80px;
-        height: 80px;
-        background: linear-gradient(135deg, #FAD67B 0%, #F08E74 100%); 
-        border-radius: 50%;
-        position: absolute;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        border: 4px solid #181312;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #2d2625;
-        font-size: 1.1rem;
-        box-shadow: 0 0 10px rgba(240, 142, 116, 0.5);
-    }
-
-    .vinyl-label::after {
-        content: "";
-        width: 12px;
-        height: 12px;
-        background: #181312;
-        border-radius: 50%;
-    }
-
-    @keyframes rotateDisc {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
-
-    .playlist {
-        list-style: none;
-        width: 100%;
-    }
-
-    .playlist li {
-        margin-bottom: 12px;
-        background: rgba(255, 255, 255, 0.04);
+        max-width: 100%;
         border-radius: 12px;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        outline: none;
     }
 
-    .playlist li:hover {
-        background: rgba(240, 142, 116, 0.1); 
-        border-color: rgba(240, 142, 116, 0.3);
+    /* Ô chứa Lời bài hát */
+    .lyrics-cell {
+        padding: 20px 30px 35px 30px;
+        color: #E2EFF5; /* Màu xanh mây trời nhạt, dịu mắt */
+        font-size: 1.05rem;
+        line-height: 1.8;
+        text-align: center;
+        letter-spacing: 0.5px;
     }
 
-    .playlist a {
-        color: #D3E4ED; 
-        text-decoration: none;
-        padding: 15px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        transition: color 0.3s ease;
-        width: 100%;
-        cursor: pointer;
+    /* Đoạn điệp khúc (Highlight) */
+    .chorus {
+        color: #FAD67B; /* Màu nắng vàng rực rỡ */
+        font-weight: 600;
+        text-shadow: 0 2px 8px rgba(250, 214, 123, 0.3);
+        margin-bottom: 15px;
     }
 
-    .playlist a:hover {
-        color: #FAD67B; 
-    }
-
-    .play-icon {
+    /* Phân đoạn Verse */
+    .verse-title {
+        color: #F08E74; /* Màu cam hồng hoàng hôn */
+        font-weight: bold;
+        margin-top: 15px;
+        display: block;
+        text-transform: uppercase;
         font-size: 0.9rem;
-        opacity: 0.7;
+        letter-spacing: 1.5px;
     }
 </style>
 </head>
 
 <body>
-    
-    <div class="box">
-        <h2>Nhạc Online</h2>
 
-        <!-- Container Đĩa Nhạc Xoay -->
-        <div class="disc-container">
-            <div class="vinyl" id="vinyl">
-                <div class="vinyl-label">🎵</div>
-            </div>
+<table>
+  <tbody>
+    <tr>
+      <td class="video-cell">
+        <!-- Sửa lỗi cú pháp video và tự động phát (muted giúp autoplay hoạt động mượt hơn) -->
+        <video controls autoplay muted>
+          <source src="../Video/videoplayback.mp4" type="video/mp4">
+          Trình duyệt của bạn không hỗ trợ thẻ video.
+        </video>
+      </td>
+    </tr>
+    <tr>
+      <td class="lyrics-cell">
+        <div class="chorus">
+          Now he's thinkin' 'bout me every night, oh<br>
+          Is it that sweet? I guess so. Say you can't sleep, baby, I know<br>
+          That's that me, espresso<br>
+          Move it up, down, left, right, oh<br>
+          Switch it up like Nintendo. Say you can't sleep, baby, I know<br>
+          That's that me, espresso
         </div>
 
-        <!-- Danh sách nhạc -->
-        <ul class="playlist">
-            <li>
-                <!-- Truyền thêm tham số 'event' vào hàm để xử lý chặn chuyển trang -->
-                <a href= "../Sounds/nhac - (320 Kbps).mp3"  onclick="playMusic(event, '../Sounds/nhac - (320 Kbps).mp3', 'Phép màu', this)">
-                    <span>1. Phép màu</span>
-                    <span class="play-icon">▶</span>
-                </a>
-            </li>
-            <li>
-                <a href="../Sounds/nhac1 - (320 Kbps).mp3" onclick="playMusic(event, '../Sounds/nhac1 - (320 Kbps).mp3', 'Nơi này có anh', this)">
-                    <span>2. Nơi này có anh</span>
-                    <span class="play-icon">▶</span>
-                </a>
-            </li>
-            <li>
-                <a href="../Sounds/nhac3 - (320 Kbps).mp3" onclick="playMusic(event, '../Sounds/nhac3 - (320 Kbps).mp3', 'Chiếc khăn gió ấm', this)">
-                    <span>3. Chiếc khăn gió ấm</span>
-                    <span class="play-icon">▶</span>
-                </a>
-            </li>
-        </ul>
-    </div>
+        <span class="verse-title">[Verse 1]</span>
+        I can't relate to desperation<br>
+        My "give a fucks" are on vacation<br>
+        And I got this one boy and he won't stop calling<br>
+        When they act this way, I know I got 'em<br>
 
-    <!-- THÀNH PHẦN THÊM MỚI: Thẻ phát âm thanh ẩn -->
-    <audio id="player"></audio>
+        <span class="verse-title">[Pre-Chorus]</span>
+        Too bad your ex don't do it for ya<br>
+        Walked in and dream-came-trued it for ya<br>
+        Soft skin and I perfumed it for ya (Yes)<br>
+        I know I Mountain Dew it for ya (Yes)<br>
+        That morning coffee, brewed it for ya (Yes)<br>
+        One touch and I brand-newed it for ya
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-    <script>
-        const vinyl = document.getElementById('vinyl');
-        const player = document.getElementById('player');
-        let currentLink = null; // Lưu lại thẻ <a> của bài hát đang phát
-
-        // Hàm xóa màu kích hoạt (active) của bài trước đó
-        function resetUI() {
-            document.querySelectorAll('.playlist li').forEach(li => {
-                li.style.background = "rgba(255, 255, 255, 0.04)";
-                li.style.borderColor = "rgba(255, 255, 255, 0.05)";
-                li.querySelector('a').style.color = "#D3E4ED";
-                li.querySelector('.play-icon').innerText = "▶";
-            });
-        }
-
-        function playMusic(event, fileUrl, songTitle, linkElement) {
-            // LỆNH QUAN TRỌNG: Chặn không cho trình duyệt tự chuyển trang/tải file
-            event.preventDefault();
-
-            // Nếu bấm lại vào đúng bài đang phát -> Tạm dừng (Pause)
-            if (currentLink === linkElement && !player.paused) {
-                player.pause();
-                vinyl.style.animationPlayState = 'paused';
-                linkElement.querySelector('.play-icon').innerText = "▶";
-                return;
-            }
-
-            // Nếu bấm vào bài đang tạm dừng -> Phát tiếp (Resume)
-            if (currentLink === linkElement && player.paused) {
-                player.play();
-                vinyl.style.animationPlayState = 'running';
-                linkElement.querySelector('.play-icon').innerText = "⏸";
-                return;
-            }
-
-            // Nếu chọn một bài hoàn toàn mới
-            resetUI();
-            currentLink = linkElement;
-            player.src = fileUrl; // Nạp đường dẫn bài mới vào bộ phát
-
-            player.play().then(() => {
-                vinyl.style.animationPlayState = 'running'; // Xoay đĩa
-                
-                // Đổi màu bài đang chọn (Active style)
-                const parentLi = linkElement.parentElement;
-                parentLi.style.background = "rgba(240, 142, 116, 0.18)";
-                parentLi.style.borderColor = "rgba(240, 142, 116, 0.4)";
-                linkElement.style.color = "#FAD67B";
-                linkElement.querySelector('.play-icon').innerText = "⏸";
-                console.log("Đang phát: " + songTitle);
-            }).catch(err => {
-                console.log("Lỗi: Không tìm thấy file nhạc hoặc trình duyệt chặn tự động phát.", err);
-            });
-        }
-
-        // Tự động dừng đĩa và reset giao diện khi nhạc hết bài
-        player.addEventListener('ended', () => {
-            vinyl.style.animationPlayState = 'paused';
-            resetUI();
-            currentLink = null;
-        });
-    </script>
 </body>
 </html>
